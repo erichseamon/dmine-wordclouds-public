@@ -23,10 +23,10 @@ library(httr)
 library(base64enc)
 #--twitter authentication
 options(httr_oauth_cache=T)
-api_key <- "fEudPDoHEj9xz6gYKZ7Qc2f8V"
-api_secret <- "P1WHRbwi8v9SV41a1BeMnmugmGjiJSjQQYGb6PhscrZJMQspMq"
-access_token <- "11766682-euvpiRXoStHgcwyFSwVDnIncmhxZdr0wbF7PFoC9O"
-access_token_secret <- "b3pzUvIijfYvBEAftFSac3rLLuo82Gy6BTo2KSwc6Jc7M"
+api_key <- "REDACTED"
+api_secret <- "REDACTED"
+access_token <- "REDACTED"
+access_token_secret <- "REDACTED"
 
 setup_twitter_oauth(api_key, api_secret, access_token, access_token_secret)
 
