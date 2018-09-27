@@ -1,5 +1,5 @@
 #
-# DATE:         December 2015
+# DATE:         July 2018 
 #
 # STAGE:        dmine-wordcloud.R
 #
