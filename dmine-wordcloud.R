@@ -31,8 +31,16 @@ access_token_secret <- "b3pzUvIijfYvBEAftFSac3rLLuo82Gy6BTo2KSwc6Jc7M"
 setup_twitter_oauth(api_key, api_secret, access_token, access_token_secret)
 
 #-uses the twitter api and twitteR to search the last n number of tweets
-mach_tweets = searchTwitter("climate+change", n=500, lang="en", resultType = "recent")
-#mach_tweets = searchTwitter("climate+change", n=500, lang="en", geocode='46.732,-117.001, 100mi', resultType = "recent")
+#mach_tweets = searchTwitter("climate+change", n=500, lang="en", resultType = "recent")
+#seattle_mach_tweets = searchTwitter("climate+change", n=500, lang="en", geocode='46.732,-117.001, 100mi', resultType = "recent")
+
+#mach_tweets = searchTwitter("climate+change", n=500, lang="en", geocode='37.774,-122.431, 100mi', resultType = "recent")
+
+mach_tweets = searchTwitter("climate+change", n=500, lang="en", geocode='47.608,-122.335, 100mi', resultType = "recent")
+
+
+
+
 #--create a matrix using apply of the tweet texts
 mach_text = sapply(mach_tweets, function(x) x$getText())
 mach_text <- iconv(mach_text,to="utf-8")
@@ -59,11 +67,12 @@ setwd("/dmine/data/wordclouds")
 
 string <- format(Sys.time(), format = "%Y-%m-%d_%H:%M:%S")
 
-layout(matrix(c(2, 1), ncol=2), heights=c(4,1))
+cloudname <- "climate.png"
+cloudpng <- png(paste0(string, "_", cloudname),width=10,height=10,units="in", res=300)
+layout(matrix(c(2,1), ncol=1), heights=c(1,4))
 par(mar=c(0,0,0,8))
 #text(x=0.5, y=0.5, "Title of my first plot")
-cloudname <- "climate.png"
-cloudpng <- png(paste0(string, "_", cloudname),width=8,height=8,units="in", res=300)
+
 #mtext(format(Sys.time(), "%a %b %d %X %Y"), side = 3, col="blue", cex=1.5)
 wordcloud(dm$word, dm$freq, random.order=FALSE, colors=brewer.pal(8, "Dark2"), main = "Title")
 mtext(format(Sys.time(), "%a %b %d %X %Y"), side = 3, col="blue", cex=1.5)
